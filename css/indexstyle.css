@@ -1,0 +1,300 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+img{
+	display: block;
+	border: 0;
+	float: left;
+}
+ul,ol{
+	list-style: none ;
+	margin-bottom: 0;
+}
+p{
+	margin: 0;
+}
+body{
+	font-size: 12px;
+	font-style: "微软雅黑";
+	letter-spacing: 0.2em;
+}
+a{
+	color: #fff;
+	text-decoration: none;
+}
+#box{
+	min-width: 1020px;
+}
+#top{
+	width: 100%;
+	position: fixed;
+	z-index: 10001;
+	background: #fff;
+}
+#shop-cart{
+	height: 0;
+	overflow: hidden;
+}
+.shop-bag{
+	width: 272px;
+	height: 374px;
+	float: right;
+	padding-top: 27px;
+	position: relative;
+	background: #222;	
+}
+.shop-bag h2{
+	font-size: 18px;
+	color: #fff;
+	margin: 0 36px 25px 26px;
+}
+.shop-bag-num{
+	color: #727272;
+	min-height: 90px;
+	margin: 0 36px 0 26px;
+}
+.shop-bag-money{
+	color: #727272;
+	margin: 0 36px 10px 26px;
+}
+.shop-money{
+	font-size: 19px;
+	color: #fff;
+	margin: 0 36px 24px 26px;
+}
+.delete{
+	width: 13px;
+	height: 13px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -319px;
+	position: absolute;
+	top: 27px;
+	right: 20px;
+}
+.shop-message{
+	width: auto;
+	position: relative;
+	margin-right: 272px;
+	text-align: center;
+	line-height: 374px;
+	font-size: 15px;
+}
+#nav{
+	width: 100%;
+	overflow: hidden;
+	line-height: 60px;
+	border-top: 1px solid #999;
+	margin-top: -1px;
+}
+.logo{
+	float: left;
+	margin-left: 15px;
+}
+.logo span{
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -37px;
+	width: 180px;
+	height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.top-nav{
+	float: right;
+}
+.top-nav ul{
+	float: left;
+	cursor: pointer;
+}
+.top-nav ul li{
+	float: left;
+	border-right: 1px solid #999 ;
+	padding: 0 18px;
+}
+.login{
+	float: left;
+	padding: 0 18px;
+	border-right: 1px solid #999 ;
+	text-align: center;
+	cursor: pointer;
+}
+.shop-btn{
+	float: left;
+	padding: 0 18px;
+	color: #999;
+	cursor: pointer;
+}
+.shopbtn-ico{
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3006px;
+	width: 12px;
+	height: 15px;
+	display: inline-block;
+	margin-right: 9px;
+	vertical-align: middle;
+}
+.find{
+	float: left;
+	width: 150px;
+	background-color:#b9b9b9 ;
+	color: #fff;
+	cursor: pointer;
+}
+.find-ico{
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -1712px;
+	width: 14px;
+	height: 14px;
+	margin-top: 22px;
+	display: inline-block;
+	margin: 0 8px 0 12px;
+}
+.find-inp{
+	width: 100px;
+	border: none;
+	outline: medium;
+	background-color: #b9b9b9;
+}
+.bottom-nav{
+	background-color:#000 ;
+	line-height: 36px;
+	overflow: hidden;
+}
+.bottom-nav ul{
+	width: 100%;
+	float: left;
+	margin-left: 15px;
+	cursor: pointer;
+}
+.bottom-nav ul li{
+	float: left;
+	color: #fff;
+	margin-right: 3.5%;
+	border-bottom: 4px solid #000;
+}
+.bottom-nav .world{
+	color: #999;
+}
+.bottom-nav .hover{
+	border-bottom: 4px solid #999;
+	color: #999;
+}
+.bottom-nav ul li ul{
+	width: 20em;
+	background-color: #999;
+	position: absolute;
+	padding-left:15px ;
+	padding-right: 80px;
+	overflow: hidden;
+	margin: 4px 0 0;
+}
+.bottom-nav ul li ul li{
+	width: 20em;
+	line-height: 3.5em;
+	font-size: 14px;
+	border: 0;
+}
+.bottom-nav ul li ul li a:hover{
+	color: #000;
+	text-decoration: none;
+}
+#coverDiv{
+	width: 100%;
+	background: #000;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+	display: none;
+	position: absolute;
+	z-index: 10000;
+}
+#inner{
+	position: relative;
+	overflow: hidden;
+}
+#inner div{
+	overflow: hidden;
+	float: left;
+}
+#inner img{
+	width: 100%;
+}
+.half{
+	width: 50%;
+}
+.less{
+	width: 40%;
+}
+.most{
+	width: 60%;
+}
+.thrid{
+	width: 33.3%;
+}
+.inner-message{
+	width: 100%;
+	height: 100%;
+	display: block;	
+	position: absolute;
+	padding: 0 4%;
+}
+.message-box{
+	width: 25em;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.gotop{
+	width: 45px;
+	height: 45px;
+	background: #2d2d2d;
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	text-align: center;
+	display: none;
+	cursor: pointer;
+}
+.gotop-ico{
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -1425px;
+	width: 7px;
+	height: 12px;
+	margin-top: 17px;
+	display: inline-block;
+}
+#foot{
+	padding-top: 16px;
+	background-color: #f6f6f6;
+	overflow: hidden;
+}
+.open-site{
+	width: 80px;
+	cursor: pointer;
+	float: left;
+}
+.open-site span{
+	display: block;
+	width: 11px;
+	height: 6px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -230px;
+	margin-left: 17px;
+	margin-top: 2px;
+}
+.site{
+	width: 90%;
+	float: left;
+	position: relative;
+}
+.site ul{
+	overflow: hidden;
+}
+.site-nav{
+	padding-right: 15px;
+	float: left;
+	cursor: pointer;
+}
+.site-nav ol{
+	height: 0;
+	margin-top: 20px;
+}
+.site-nav .site-message{
+	color: #b1b1b1;
+	margin-bottom: 15px;
+	cursor: pointer;
+}

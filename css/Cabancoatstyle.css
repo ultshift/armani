@@ -1,0 +1,157 @@
+.meddle-paga{
+	width: 84%;
+	position: relative;
+	left: 16%;
+	background-color: #fff;
+}
+.master{
+	margin-right: 408px;
+}
+#middle .master img{
+	width: 50%;
+}
+.referral{
+	width: 408px;
+	position: absolute;
+	right: 0;
+}
+.back{
+	width: 80%;
+	margin: 25px 10% 10px;
+}
+.back-btn{
+	display: block;
+	float: right;
+}
+.backto{
+	color: #999;
+	cursor: pointer;
+}
+.back-prev{
+	display: inline-block;
+	width: 9px;
+	height: 16px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -2614px;
+	margin-right: 38px;
+	cursor: pointer;
+}
+.back-next{
+	display: inline-block;
+	width: 9px;
+	height: 16px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -2562px;
+	cursor: pointer;
+}
+.title{
+	font-size: 17px;
+	margin: 80px 10% 0;
+}
+.price{
+	font-size: 17px;
+	margin: 18px 10% 10px;
+}
+.message{
+	margin: 25px 10% 15px;
+}
+.color{
+	display: inline-block;
+	font-size: 11px;
+	width: 35%;
+	line-height: 32px;
+	margin-right: 5px;
+	padding-left: 8px;
+	border: 1px solid #afafaf;
+}
+.size{
+	font-size: 11px;
+	width: 35%;
+	height: 34px;
+	margin-right: 5px;
+	padding-left: 8px;
+	border: 1px solid #afafaf;
+}
+.guide{
+	cursor: pointer;
+	text-decoration: underline;
+}
+.addshop{
+	width: 70%;
+	cursor: pointer;
+	line-height: 50px;
+	background-color: #000;
+	color: #fff;
+	margin: 40px 10% 0;
+	text-align: center;
+}
+.collect{
+	width: 70%;
+	line-height: 40px;
+	color: #fff;
+	background-color:#bababa ;
+	text-align: center;
+	margin: 5px 10% 0;
+	cursor: pointer;
+}
+.collect span{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3672px;
+	margin-right: 8px;
+}
+.weibo{
+	display: block;
+	width: 22px;
+	height: 22px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3458px;
+	margin: 25px 10% 35px;
+	cursor: pointer;
+}
+.coding{
+	margin: 15px 10% 0;
+	font-size: 11px;
+	color: #9c9c9c;
+}
+.tabs{
+	margin: 15px 10% 0;
+}
+.tabs li{
+	overflow: hidden;
+}
+.description{
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 40px;
+	padding-left: 5px;
+	border-left: 2px solid #fff;
+}
+.arrow{
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	float: right;
+	margin: 13px 20px 14px 0;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -2844px;
+}
+.tabs-text{
+	display: none;
+	color: #9c9c9c;
+	padding-left: 5px;
+	margin-bottom: 20px;
+}
+.tabs-list{
+	list-style: disc;
+	list-style-position: inside;	
+}
+.open .description{
+	font-weight: 700;
+	text-decoration: underline;
+}
+.open .arrow{
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	float: right;
+	margin: 13px 20px 14px 0;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -2545px;
+}

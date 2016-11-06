@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>
+			Armani.cn 官方网络旗舰店
+		</title>
+		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
+		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/function.js"></script>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="top">
+				<div id="shop-cart">
+					<div class="shop-bag">
+						<h2>购物袋</h2>
+						<p class="shop-bag-num">您的购物袋中有<span class="shopNum">0</span>件商品</p>
+						<p class="shop-bag-money">小计：</p>
+						<p class="shop-money">￥<span class="shopMoneyNum">0</span></p>
+						<span class="delete"></span>
+					</div>
+					<div class="shop-message">
+						<p>您的购物袋中有0件商品</p>
+					</div>
+				</div>
+				<div class="register"></div>
+				<div id="nav">
+					<div class="logo">
+						<a href="index.html"><span></span></a>
+					</div>
+					<div class="top-nav">
+						<ul></ul>
+						<div class="login">
+							<span class="logtext">登录</span>
+						</div>
+						<div class="shop-btn">
+							<span class="shopbtn-ico"></span>
+							<span class="shopNum">0</span>
+						</div>
+						<div class="find">
+							<span class="find-ico"></span>
+							<span class="find-text">查找</span>
+						</div>
+					</div>
+				</div>
+				<div class="bottom-nav">
+					<ul></ul>
+				</div>
+			</div>
+			<div id="animateDiv"></div>
+			<div id="coverDiv"></div>
+			<div id="inner">
+				<div class="less"></div>
+				<div class="most"></div>
+				<div class="half"></div>
+				<div class="half"></div>
+				<div class="half"></div>
+				<div class="half"></div>
+				<div class="most"></div>
+				<div class="less"></div>
+				<div class="half"></div>
+				<div class="half"></div>			
+				<div class="thrid"></div>
+				<div class="thrid"></div>
+				<div class="thrid"></div>
+				<span class="gotop">
+					<span class="gotop-ico"></span>
+				</span>
+			</div>
+			<div id="foot">
+				<div class="open-site">
+					<span></span>
+				</div>
+				<div class="site">
+					<ul></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				url: "json/nav.json",
+				type: "get",
+				success: function(data) {
+					nav(data);
+				}
+			});
+			$.ajax({
+				url: "json/indexNav.json",
+				type: "get",
+				success: function(data) {
+					indexNav(data);
+				}
+			});
+			$(".shop-btn").click(shopCartShow);
+			$(".delete").click(shopCartShow);
+			$(".find").click(findShow);
+			$.ajax({
+				url: "json/index.json",
+				type: "get",
+				success: function(data) {
+					index(data);
+				}
+			});
+			$(document).scroll(goTopShow);
+			$(".gotop").click(goTop);
+			$.ajax({
+				url: "json/footsite.json",
+				type: "get",
+				success: function(data){
+					footsite(data);
+				}
+			});
+			$(window).resize(function(){
+				$("#coverDiv").css("height", $("#inner").height());
+			})
+		});
+	</script>
+
+</html>

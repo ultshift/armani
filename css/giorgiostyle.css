@@ -1,0 +1,247 @@
+#middle{
+	position: relative;
+	overflow: hidden;
+	background-color: #d0c8b8;
+}
+#middle div{
+	overflow: hidden;
+	float: left;
+}
+#middle img{
+	width: 100%;
+	height: 100%;
+}
+.left-nav{
+	width: 16%;
+	position: absolute;
+}
+.leftnav-log{
+	width: 100%;
+	min-height: 120px;
+}
+.leftnav-log span{
+	width: 174px;
+	height: 20px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -2308px;
+	position: relative;
+	top: 53px;
+	display: block;
+	margin: 0 auto;
+}
+.menu{
+	width: 100%;
+}
+.menu-title{
+	line-height: 36px;
+	text-indent: 18px;
+	cursor: pointer;
+}
+.menutitle-link{
+	width: 100%;
+	color: #585651;
+	display: block;
+}
+.menutitle-link:hover{
+	color: #585651;
+	text-decoration: none;
+}
+.menu-name{
+	background-color: #918c80;
+	border-bottom: 1px solid #a8a49b;
+	text-indent: 36px;
+}
+.menuname-link{
+	width: 100%;
+	display: block;
+}
+.menuname-link:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.menu-message{
+	text-indent: 44px;
+}
+.menumessage-link{
+	width: 100%;
+	display: block;
+	color: #c6c3bd;
+}
+.menumessage-link:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.content{
+	width: 84%;
+	position: relative;
+	left: 16%;
+	background-color: #fff;
+}
+.content div{
+	position: absolute;
+}
+.one{
+	width: 50%;
+	height: 50%;
+	left: 0;
+	top: 0:
+}
+.two{
+	width: 50%;
+	height: 26%;
+	left: 50%;
+	top: 0;
+}
+#middle .pic-two .slideme{
+	height: 83%;
+}
+#middle .pic-two .slideme li{
+	width: 40%;
+	margin: 0 30%;
+}
+.three{
+	width: 50%;
+	height: 50%;
+	left: 50%;
+	top: 26%;
+}
+.four{
+	width: 50%;
+	height: 25%;
+	left: 0;
+	top: 50%;
+}
+.five{
+	width: 25%;
+	height: 25%;
+	left: 0;
+	top: 75%;
+}
+.six{
+	width: 25%;
+	height: 25%;
+	left: 25%;
+	top: 75%;
+}
+.seven{
+	width: 25%;
+	height: 25%;
+	left: 50%;
+	top: 75%;
+}
+.eight{
+	width: 25%;
+	height: 25%;
+	left: 75%;
+	top: 75%;
+}
+.two,.five,.six,.seven,.eight{
+	background: url(../img/bg_slot_product.png) repeat-x 0 -80px;
+}
+.pic{
+	width: 100%;
+	height: 100%;
+}
+.pic-five,.pic-six,.pic-seven,.pic-eight{
+	width: 70%;
+	height: 100%;
+	margin: 0 15%;
+	text-align: center;
+}
+#middle .pic-two img{
+	width: 87%;
+	height: 80%;
+	margin: 0 6.5%;
+}
+#middle .pic-five img{
+	height: 70%;
+}
+#middle .pic-six img{
+	height: 70%;
+}
+#middle .pic-seven img{
+	height: 70%;
+}
+#middle .pic-eight img{
+	height: 70%;
+}
+.slideme li{
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: absolute;
+	overflow: hidden;
+}
+.slideme .current{
+	left: 0;
+	z-index: 5;
+	display: block;
+}
+.slideme .move-prev{
+	display: block;
+	left: -100%;
+}
+.slideme .move-next{
+	display: block;
+	left: 100%;
+}
+.prev{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	display: block;
+	border: 0;
+	background: transparent;
+	z-index: 60;
+	font-size: 4em;
+	padding: 0.5em 10px;
+	margin-top: -1.5em;
+	outline: none;
+}
+.next{
+	position: absolute;
+	top: 50%;
+	right: 0;
+	display: block;
+	border: 0;
+	background: transparent;
+	z-index: 60;
+	font-size: 4em;
+	padding: 0.5em 10px;
+	margin-top: -1.5em;
+	outline: none;
+}
+.numbers{
+	position: absolute;
+	bottom: 5%;
+	z-index: 10;
+}
+.numbers li{
+	float: left;
+	font-size: 2em;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	cursor: pointer;
+}
+.numbers .current{
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.pic h4{
+	font-size: 1.4em;
+	margin: 1% 0 2% 0;
+	display: inline-block;
+}
+#middle .slideme{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: relative;
+}
+.choose-btn{
+	height: 3em;
+	line-height: 3em;
+	background-color: #000;
+	color: #fff;
+	padding: 0 15px;
+	margin: 0.6em 0.6em 0 0.6em;
+}
