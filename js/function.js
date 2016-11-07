@@ -1,10 +1,23 @@
 function shopCartShow() {
-	if($("#shop-cart").height() == 0) {
+	if($("#login").height() == 374) {
+		$("#login").css("height", "0");
+		$(".login-btn").css({
+			background: "#fff",
+			color: "#999"
+		});
 		$(".shop-btn").css({
 			background: "#222",
 			color: "#fff"
 		});
-		$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3031px")
+		$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3031px");
+		$("#shop-cart").css("height", "374");
+		$("#coverDiv").css("display", "block");
+	} else if($("#shop-cart").height() == 0) {
+		$(".shop-btn").css({
+			background: "#222",
+			color: "#fff"
+		});
+		$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3031px");
 		$("#shop-cart").animate({
 			height: 374
 		}, 500, "linear");
@@ -17,9 +30,100 @@ function shopCartShow() {
 			background: "#fff",
 			color: "#999"
 		});
-		$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3006px")
+		$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3006px");
 		$("#coverDiv").css("display", "none");
 	}
+}
+
+function loginShow() {
+	if($("#shop-cart").height() == 374) {
+		$("#shop-cart").css("height", "0");
+		$(".shop-btn").css({
+			background: "#fff",
+			color: "#999"
+		});
+		$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3006px");
+		$(".login-btn").css({
+			background: "#222",
+			color: "#fff"
+		});
+		$("#login").css("height", "374");
+		$("#coverDiv").css("display", "block");
+	} else if($("#login").height() == 0) {
+		$(".login-btn").css({
+			background: "#222",
+			color: "#fff"
+		});
+		$("#login").animate({
+			height: 374
+		}, 500, "linear");
+		$("#coverDiv").css("display", "block");
+	} else {
+		$("#login").animate({
+			height: 0
+		}, 500, "linear");
+		$(".login-btn").css({
+			background: "#fff",
+			color: "#999"
+		});
+		$("#coverDiv").css("display", "none");
+	}
+	$(".login-bag a").hover(function() {
+		$(this).css({
+			"background-color": "#989898",
+			"color": "#fff"
+		});
+	}, function() {
+		$(this).css({
+			"background-color": "#fff",
+			"color": "#000"
+		});
+	});
+	$(".login-message button").hover(function() {
+		$(this).css("background-color", "#989898");
+	}, function() {
+		$(this).css("background-color", "#000");
+	});
+	$(".username").blur(function() {
+		var oValue = $(this).val().replace(/\s/g, "");
+		$(this).val(oValue);
+		var pattern = /^\w+@\w+(\.\w+)+$/;
+		if(pattern.test($(this).val())) {
+			$(this).css("border", "1px solid #A9A9A9");
+			$(".username-hint").html("&nbsp;");
+		} else if($(this).val().length == 0) {
+			$(this).css("border", "1px solid red");
+			$(".username-hint").html("*必填");
+		} else {
+			$(this).css("border", "1px solid red");
+			$(".username-hint").html("请输入正确的电子邮箱地址");
+		}
+	});
+	$(".password").blur(function() {
+		var oValue = $(this).val().replace(/\s/g, "");
+		$(this).val(oValue);
+		var pattern = /^.{8,20}$/;
+		if(pattern.test($(this).val())) {
+			$(this).css("border", "1px solid #A9A9A9");
+			$(".password-hint").html("&nbsp;");
+		} else if($(this).val().length == 0) {
+			$(this).css("border", "1px solid red");
+			$(".password-hint").html("*必填");
+		} else {
+			$(this).css("border", "1px solid red");
+			$(".password-hint").html("请核对您当前使用的密码");
+		}
+	});
+	var selectdown = true;
+	$(".select").click(function() {
+		if(selectdown) {
+			$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -740px");
+			selectdown = false;
+		} else {
+			$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -647px");
+			selectdown = true;
+		}
+	});
 }
 
 function index(data) {
@@ -34,7 +138,9 @@ function index(data) {
 		if(data[i].ico) {
 			$('<span class="inner-message"><div class="message-box" title="' + i + '"><img src="' + data[i].ico + '"></div></span>').appendTo(oDiv[i]);
 		}
-		$(".message-box")[i].style.top = 100 * (((oDiv[$(".message-box")[i].title].offsetHeight - $(".message-box")[i].offsetHeight) / 2) / oDiv[$(".message-box")[i].title].offsetHeight) + "%";
+	}
+	for(var i = 0; i < $(".message-box").length; i++) {
+		$(".message-box").eq(i).css("top", 100 * ((($(".message-box").eq(1).parents().height() - $(".message-box").eq(i).height()) / 2) / $(".message-box").eq(1).parents().height()) + "%");
 	}
 	$("#coverDiv").css("height", $("#inner").height());
 }
@@ -228,22 +334,22 @@ function giorgio(data) {
 		var _slideme = $(this).siblings(".slideme").find(".current");
 		var _numbers = $(this).siblings(".numbers").find(".current");
 		_slideme.animate({
-			left:"100%" 
-		}, 500, "linear", function(){
+			left: "100%"
+		}, 500, "linear", function() {
 			_slideme.removeClass("current").removeAttr("style");
 		});
 		_numbers.removeClass();
 		if(_slideme.index() == 0) {
 			$(this).siblings(".slideme").find("li:last").addClass("move-prev").animate({
-				left:0
-			}, 500, "linear", function(){
+				left: 0
+			}, 500, "linear", function() {
 				$(".move-prev").addClass("current").removeClass("move-prev");
 			});
 			$(this).siblings(".numbers").find("li:last").addClass("current");
 		} else {
 			_slideme.prev().addClass("move-prev").animate({
-				left:0
-			}, 500, "linear", function(){
+				left: 0
+			}, 500, "linear", function() {
 				$(".move-prev").addClass("current").removeClass("move-prev");
 			});
 			_numbers.prev().addClass("current");
@@ -253,22 +359,22 @@ function giorgio(data) {
 		var _slideme = $(this).siblings(".slideme").find(".current");
 		var _numbers = $(this).siblings(".numbers").find(".current");
 		_slideme.animate({
-			left:"-100%" 
-		}, 500, "linear", function(){
+			left: "-100%"
+		}, 500, "linear", function() {
 			_slideme.removeClass("current").removeAttr("style");
 		});
 		_numbers.removeClass();
 		if(_slideme.index() == $(this).siblings(".slideme").find("li").length - 1) {
 			$(this).siblings(".slideme").find("li:first").addClass("move-next").animate({
-				left:0
-			}, 500, "linear", function(){
+				left: 0
+			}, 500, "linear", function() {
 				$(".move-next").addClass("current").removeClass("move-next");
 			});
 			$(this).siblings(".numbers").find("li:first").addClass("current");
 		} else {
 			_slideme.next().addClass("move-next").animate({
-				left:0
-			}, 500, "linear", function(){
+				left: 0
+			}, 500, "linear", function() {
 				$(".move-next").addClass("current").removeClass("move-next");
 			});
 			_numbers.next().addClass("current");
@@ -277,29 +383,29 @@ function giorgio(data) {
 	$(".numbers li").click(function() {
 		var _slideme = $(this).parents(".numbers").siblings(".slideme").find(".current");
 		var _numbers = $(this).siblings(".current");
-		if($(this).index() < _numbers.index()){
+		if($(this).index() < _numbers.index()) {
 			_slideme.animate({
-				left:"100%" 
-			}, 500, "linear", function(){
+				left: "100%"
+			}, 500, "linear", function() {
 				_slideme.removeClass("current").removeAttr("style");
 			});
 			_numbers.removeClass();
 			$(this).parents(".numbers").siblings(".slideme").find("li").eq($(this).index()).addClass("move-prev").animate({
-				left:0
-			}, 500, "linear", function(){
+				left: 0
+			}, 500, "linear", function() {
 				$(".move-prev").addClass("current").removeClass("move-prev");
 			});
 			$(this).addClass("current");
-		}else if($(this).index() > _numbers.index()){
+		} else if($(this).index() > _numbers.index()) {
 			_slideme.animate({
-				left:"-100%" 
-			}, 500, "linear", function(){
+				left: "-100%"
+			}, 500, "linear", function() {
 				_slideme.removeClass("current").removeAttr("style");
 			});
 			_numbers.removeClass();
 			$(this).parents(".numbers").siblings(".slideme").find("li").eq($(this).index()).addClass("move-next").animate({
-				left:0
-			}, 500, "linear", function(){
+				left: 0
+			}, 500, "linear", function() {
 				$(".move-next").addClass("current").removeClass("move-next");
 			});
 			$(this).addClass("current");
@@ -418,10 +524,10 @@ function Cabancoat(data) {
 	}, function() {
 		$(this).css("background-color", "#bababa");
 	});
-	$(".weibo").hover(function(){
-		$(this).css("background","url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3518px");
-	},function(){
-		$(this).css("background","url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3458px");
+	$(".weibo").hover(function() {
+		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3518px");
+	}, function() {
+		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3458px");
 	})
 	$(".description").hover(function() {
 		$(this).css("border-left", "2px solid #000");
@@ -436,4 +542,96 @@ function Cabancoat(data) {
 		$(this).find(".tabs-text").slideDown(700);
 	});
 	$("#coverDiv").css("height", $("#middle").height());
+}
+
+function isName() {
+	var oValue = $(this).val().replace(/\s/g, "");
+	$(this).val(oValue);
+	var pattern = /^[\u4e00-\u9fa5]{2,4}$|^[a-zA-Z]{1,30}$/gi;
+	if(pattern.test($(this).val())) {
+		$(this).css("border", "1px solid #A9A9A9");
+		$(".name-hint").html("&nbsp;");
+	} else if($(this).val().length == 0) {
+		$(this).css("border", "1px solid red");
+		$(".name-hint").html("*必填");
+	} else {
+		$(this).css("border", "1px solid red");
+		$(".name-hint").html("请您确认姓名");
+	}
+}
+
+function isSurname() {
+	var oValue = $(this).val().replace(/\s/g, "");
+	$(this).val(oValue);
+	var pattern = /^[\u4e00-\u9fa5]{2,4}$|^[a-zA-Z]{1,30}$/gi;
+	if(pattern.test($(this).val())) {
+		$(this).css("border", "1px solid #A9A9A9");
+		$(".surname-hint").html("&nbsp;");
+	} else if($(this).val().length == 0) {
+		$(this).css("border", "1px solid red");
+		$(".surname-hint").html("*必填");
+	} else {
+		$(this).css("border", "1px solid red");
+		$(".surname-hint").html("请您确认姓名");
+	}
+}
+
+function isEmail() {
+	var oValue = $(this).val().replace(/\s/g, "");
+	$(this).val(oValue);
+	var pattern = /^\w+@\w+(\.\w+)+$/;
+	if(pattern.test($(this).val())) {
+		$(this).css("border", "1px solid #A9A9A9");
+		$(".email-hint").html("&nbsp;");
+	} else if($(this).val().length == 0) {
+		$(this).css("border", "1px solid red");
+		$(".email-hint").html("*必填");
+	} else {
+		$(this).css("border", "1px solid red");
+		$(".email-hint").html("请输入正确的电子邮箱地址");
+	}
+}
+
+function isAffirm() {
+	var oValue = $(this).val().replace(/\s/g, "");
+	$(this).val(oValue);
+	if($(this).val().length == 0) {
+		$(this).css("border", "1px solid red");
+		$(".affirm-hint").html("*必填");
+	} else if($(this).val() == $(".email-inp").val()) {
+		$(this).css("border", "1px solid #A9A9A9");
+		$(".affirm-hint").html("&nbsp;");
+	} else {
+		$(this).css("border", "1px solid red");
+		$(".affirm-hint").html("电子邮箱地址不符");
+	}
+}
+function isPass() {
+	var oValue = $(this).val().replace(/\s/g, "");
+	$(this).val(oValue);
+	var pattern = /^.{8,20}$/;
+	if(pattern.test($(this).val())) {
+		$(this).css("border", "1px solid #A9A9A9");
+		$(".pass-hint").html("&nbsp;");
+	} else if($(this).val().length == 0) {
+		$(this).css("border", "1px solid red");
+		$(".pass-hint").html("*必填");
+	} else {
+		$(this).css("border", "1px solid red");
+		$(".pass-hint").html("请核对您当前使用的密码");
+	} 
+}
+function isVerify() {
+	var oValue = $(this).val().replace(/\s/g, "");
+	$(this).val(oValue);
+	if($(this).val().length == 0) {
+		$(this).css("border", "1px solid red");
+		$(".verify-hint").html("*必填");
+	} else if($(this).val() == $(".pass-inp").val()) {
+		$(this).css("border", "1px solid #A9A9A9");
+		$(".verify-hint").html("&nbsp;");
+	} else {
+		$(this).css("border", "1px solid red");
+		$(".verify-hint").html("两次所输入的密码不匹配");
+	}
 }

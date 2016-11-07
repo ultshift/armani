@@ -23,6 +23,9 @@ a{
 	color: #fff;
 	text-decoration: none;
 }
+a:hover{
+	text-decoration: none;
+}
 #box{
 	min-width: 1020px;
 }
@@ -63,7 +66,7 @@ a{
 	color: #fff;
 	margin: 0 36px 24px 26px;
 }
-.delete{
+.shop-delete{
 	width: 13px;
 	height: 13px;
 	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -319px;
@@ -78,6 +81,124 @@ a{
 	text-align: center;
 	line-height: 374px;
 	font-size: 15px;
+}
+#login{
+	height: 0;
+	overflow: hidden;
+}
+.login-bag{
+	width: 322px;
+	height: 374px;
+	float: right;
+	padding-top: 27px;
+	position: relative;
+	background: #222;	
+}
+.login-bag h2{
+	font-size: 18px;
+	color: #fff;
+	margin: 0 36px 25px 26px;
+}
+.login-bag p{
+	color: #727272;
+	margin: 0 36px 0 26px;
+}
+.login-bag h3{
+	font-size: 12px;
+	color: #fff;
+	margin: 0 36px 0 26px;
+	padding: 14px 0 18px 0;
+}
+.login-bag ol{
+	margin: 0 36px 0 36px;
+	color: #727272;
+	list-style-type: decimal;
+}
+.login-bag a{
+	position: absolute;
+	bottom: 18px;
+	display: inline-block;
+	margin: 0 36px 0 26px;
+	padding: 10px 48px;
+	color: #000;
+	background-color: #fff;
+}
+.login-delete{
+	width: 13px;
+	height: 13px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -319px;
+	position: absolute;
+	top: 27px;
+	right: 20px;
+}
+.login-message{
+	width: auto;
+	position: relative;
+	margin-right: 322px;
+	padding: 29px 0 0 35px;
+	height: 374px;
+	font-size: 15px;
+}
+.login-message h2{
+	font-size: 18px;
+	margin: 0 0 20px;
+}
+.hint{
+	font-size: 12px;
+	color: #b9b9b9;
+	margin-bottom: 20px;
+}
+.username{
+	width: 402px;
+	padding: 2px 8px;
+	height: 39px;
+	line-height: 33px;
+}
+.username-hint{
+	font-size: 12px;
+	color: red;
+	line-height: 24px;
+}
+.password{
+	width: 402px;
+	padding: 2px 8px;
+	height: 39px;
+	line-height: 33px;
+}
+.login-message .forget{
+	cursor: pointer;
+	font-size: 12px;
+	text-decoration: underline;
+}
+.password-hint{
+	font-size: 12px;
+	color: red;
+	line-height: 24px;
+}
+.remember{
+	font-size: 12px;
+	color: #393939;
+	height: 21px;
+	margin: 34px 0 24px 0;
+}
+.select{
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -647px;
+	margin-right: 10px;
+}
+.remember-text{
+	position: absolute;
+	line-height: 21px;
+}
+.login-message button{
+	cursor: pointer;	
+	padding: 10px 48px;
+	border: 0;
+	background-color: #000;
+	color: #fff;
+	font-size: 14px;
 }
 #nav{
 	width: 100%;
@@ -109,7 +230,7 @@ a{
 	border-right: 1px solid #999 ;
 	padding: 0 18px;
 }
-.login{
+.login-btn{
 	float: left;
 	padding: 0 18px;
 	border-right: 1px solid #999 ;

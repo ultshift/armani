@@ -1,0 +1,103 @@
+#content{
+	width: 100%;
+	position: relative;
+}
+.account{
+	position: relative;
+	width: 100%;
+	background-color: #2b2b2b;
+}
+.account-page{
+	width: 1020px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.account-page h2{
+	height: 50px;
+	margin: 50px 40px 0;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 34px;
+	color: #575757;
+}
+.word{
+	color: #fff;
+}
+.account-page p{
+	font-size: 11px;
+	font-weight: 600;
+	color: #858585;
+	margin: 0 40px 30px;
+}
+.account-title{
+	margin: 0 40px;
+	overflow: hidden;
+}
+.advantage{
+	float: left;
+	color: #fff;
+	width: 160px;
+	height: 140px;
+	margin-right: 40px;
+	text-align: center;
+	font-size: 10px;
+}
+.account-img{
+	width: 80px;
+	height: 62px;
+	margin: 0 auto 20px;
+}
+.account-down{
+	width: 23px;
+	height: 6px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3133px;
+	position: absolute;
+	left: 50%;
+	margin-left: -12px;
+}
+.profile{
+	width: 1020px;
+	margin: 0 auto;
+	padding: 40px 60px;
+	overflow: hidden;
+}
+.registry{
+	float: left;
+	width: 490px;
+	margin-right: 40px;
+	line-height: 24px;
+}
+.registry h2{
+	font-size: 11px;
+	color: #393939;
+	margin: 0 0 20px;
+	line-height: 24px;
+}
+.registry p{
+	margin: 6px 20px 10px 0;
+}
+.required{
+	color: #B7B7B7;
+	margin: 0;
+}
+.registry select{
+	width: 488px;
+	height: 34px;
+	margin-bottom: 24px;
+}
+.registry input{
+	width: 488px;
+	height: 34px;
+}
+.registry span{
+	color: red;
+}
+.preference{
+	float: left;
+	width: 370px;
+	margin-top: 30px;
+	padding: 0 30px;
+	border-top: 1px solid #d1d1d1;
+	overflow: hidden;
+}
+

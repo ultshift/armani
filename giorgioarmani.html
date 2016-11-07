@@ -23,10 +23,40 @@
 						<p class="shop-bag-num">您的购物袋中有<span class="shopNum">0</span>件商品</p>
 						<p class="shop-bag-money">小计：</p>
 						<p class="shop-money">￥<span class="shopMoneyNum">0</span></p>
-						<span class="delete"></span>
+						<span class="shop-delete"></span>
 					</div>
 					<div class="shop-message">
 						<p>您的购物袋中有0件商品</p>
+					</div>
+				</div>
+				<div id="login">
+					<div class="login-bag">
+						<h2>新用户</h2>
+						<p>立即填写详细会员信息享受专属礼遇。</p>
+						<h3>注册用户专享服务</h3>
+						<ol>
+							<li>通过“我的账户”查看个人信息</li>
+							<li>使用收藏夹保存心仪商品</li>
+							<li>完成购物流程更便捷</li>
+						</ol>
+						<a href="registe.html">注册</a>
+						<span class="login-delete"></span>
+					</div>
+					<div class="login-message">
+						<h2>我的账户</h2>
+						<p class="hint">输入您的电子邮箱及密码登录“我的账户”</p>
+						<form>
+							<input class="username" type="text" placeholder="电子邮件地址"/>
+							<p class="username-hint">&nbsp;</p>
+							<input class="password" type="text" placeholder="密码"/>
+							<span class="forget">您忘记了密码？</span>
+							<p class="password-hint">&nbsp;</p>
+							<div class="remember">
+								<span class="select"></span>
+								<span class="remember-text">下次请记住我的信息</span>
+							</div>	
+							<button>登录</button>
+						</form>
 					</div>
 				</div>
 				<div id="nav">
@@ -35,7 +65,7 @@
 					</div>
 					<div class="top-nav">
 						<ul></ul>
-						<div class="login">
+						<div class="login-btn">
 							<span class="logtext">登录</span>
 						</div>
 						<div class="shop-btn">
@@ -120,7 +150,9 @@
 				}
 			});
 			$(".shop-btn").click(shopCartShow);
-			$(".delete").click(shopCartShow);
+			$(".shop-delete").click(shopCartShow);
+			$(".login-btn").click(loginShow);
+			$(".login-delete").click(loginShow);
 			$(".find").click(findShow);
 			$(document).scroll(goTopShow);
 			$(".gotop").click(goTop);
