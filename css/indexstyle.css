@@ -79,8 +79,72 @@ a:hover{
 	position: relative;
 	margin-right: 272px;
 	text-align: center;
-	line-height: 374px;
+	height: 374px;
 	font-size: 15px;
+	overflow: hidden;
+}
+.shop-text{
+	line-height: 374px;
+}
+.prev-shop{
+	visibility: hidden;
+	float: left;
+	width: 9px;
+	height: 17px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3083px;
+	margin: 146px 24px 0 19px;
+}
+.next-shop{
+	visibility: hidden;
+	float: left;
+	width: 9px;
+	height: 17px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3056px;
+	margin: 146px 24px 0 19px;
+}
+.wrapper{
+	display: none;
+	float: left;
+	width: 800px;
+	height: 374px;
+	overflow: hidden;
+}
+.wrapper-item{
+	width: 500%;
+	overflow: hidden;
+	position: relative;
+}
+.shop-item{
+	float: left;
+	width: 160px;
+	height: 374px;
+	font-size: 11px;
+}
+.item-img{
+	margin-bottom: 16px;
+	overflow: hidden;
+}
+.shop-item img{
+	width: 100%;
+}
+.item-brand{
+	margin-bottom: 7px;
+	font-weight: 600;
+}
+.item-category{
+	height: 14px;
+	color: #909090;
+	margin-bottom: 20px;
+}
+.item-info{
+	height: 12px;
+	font-size: 10px;
+	color: #909090;
+	margin-bottom: 10px;
+}
+.item-price{
+	font-size: 15px;
+	font-weight: 600;
 }
 #login{
 	height: 0;
@@ -192,13 +256,15 @@ a:hover{
 	position: absolute;
 	line-height: 21px;
 }
-.login-message button{
-	cursor: pointer;	
-	padding: 10px 48px;
-	border: 0;
+#login_in{
+	width: 124px;
+	height: 40px;
+	cursor: pointer;
 	background-color: #000;
 	color: #fff;
 	font-size: 14px;
+	text-align: center;
+	line-height: 40px;
 }
 #nav{
 	width: 100%;
@@ -223,6 +289,7 @@ a:hover{
 }
 .top-nav ul{
 	float: left;
+	color: #999;
 	cursor: pointer;
 }
 .top-nav ul li{
@@ -230,12 +297,47 @@ a:hover{
 	border-right: 1px solid #999 ;
 	padding: 0 18px;
 }
-.login-btn{
+.hello{
+	display: none;
 	float: left;
+	color: #999;
 	padding: 0 18px;
 	border-right: 1px solid #999 ;
 	text-align: center;
 	cursor: pointer;
+}
+.login-btn{
+	float: left;
+	color: #999;
+	padding: 0 18px;
+	border-right: 1px solid #999 ;
+	text-align: center;
+	cursor: pointer;
+}
+.login-out{
+	display: none;
+	float: left;
+	color: #999;
+	padding: 0 18px;
+	border-right: 1px solid #999 ;
+	text-align: center;
+	cursor: pointer;
+}
+.collect-btn{
+	display: none;
+	float: left;
+	padding: 0 18px;
+	color: #999;
+	cursor: pointer;
+	border-right: 1px solid #999 ;
+}
+.collect-ico{
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3647px;
+	width: 12px;
+	height: 15px;
+	display: inline-block;
+	margin-right: 9px;
+	vertical-align: middle;
 }
 .shop-btn{
 	float: left;

@@ -79,39 +79,62 @@ function loginShow() {
 			"color": "#000"
 		});
 	});
-	$(".login-message button").hover(function() {
-		$(this).css("background-color", "#989898");
-	}, function() {
-		$(this).css("background-color", "#000");
-	});
+	var login_index = null;
+	var username = false;
 	$(".username").blur(function() {
 		var oValue = $(this).val().replace(/\s/g, "");
 		$(this).val(oValue);
-		var pattern = /^\w+@\w+(\.\w+)+$/;
-		if(pattern.test($(this).val())) {
-			$(this).css("border", "1px solid #A9A9A9");
-			$(".username-hint").html("&nbsp;");
-		} else if($(this).val().length == 0) {
-			$(this).css("border", "1px solid red");
-			$(".username-hint").html("*必填");
-		} else {
-			$(this).css("border", "1px solid red");
-			$(".username-hint").html("请输入正确的电子邮箱地址");
+		var str = $.cookie("login");
+		var arr = eval(str);
+		for(var i in arr){
+			if($(this).val() == arr[i].username){
+				$(this).css("border", "1px solid #A9A9A9");
+				$(".username-hint").html("&nbsp;");
+				username = true;
+				login_index = i;
+			}	
 		}
+		if(!username){
+			$(this).css("border", "1px solid red");
+			$(".username-hint").html("无效的电子邮箱地址");
+		}
+		
 	});
+	var pass = false;
 	$(".password").blur(function() {
 		var oValue = $(this).val().replace(/\s/g, "");
 		$(this).val(oValue);
-		var pattern = /^.{8,20}$/;
-		if(pattern.test($(this).val())) {
-			$(this).css("border", "1px solid #A9A9A9");
-			$(".password-hint").html("&nbsp;");
-		} else if($(this).val().length == 0) {
+		var str = $.cookie("login");
+		var arr = eval(str);
+		for(var i in arr){
+			if(i == login_index && $(this).val() == arr[i].password){
+				$(this).css("border", "1px solid #A9A9A9");
+				$(".password-hint").html("&nbsp;");
+				pass = true;
+			}	
+		}
+		if(!pass){
 			$(this).css("border", "1px solid red");
-			$(".password-hint").html("*必填");
-		} else {
-			$(this).css("border", "1px solid red");
-			$(".password-hint").html("请核对您当前使用的密码");
+			$(".password-hint").html("密码不符");
+		}	
+	});
+	$("#login_in").click(function(){
+		if(username && pass){
+			$(".login-btn").css("display","none");
+			$(".login-out").css("display","block");
+			$(".hello").css("display","block");
+			$(".collect-btn").css("display","block");
+			$("#login").animate({
+				height: 0
+			}, 500, "linear");
+			$(".login-btn").css({
+				background: "#fff",
+				color: "#999"
+			});
+			$.cookie("login-in","[{titlt:1}]",{expires:7});
+			$("#coverDiv").css("display", "none");
+		}else{
+			alert("请输入正确的信息");
 		}
 	});
 	var selectdown = true;
@@ -124,8 +147,20 @@ function loginShow() {
 			selectdown = true;
 		}
 	});
+	$("#login_in").hover(function() {
+		$(this).css("background-color", "#989898");
+	}, function() {
+		$(this).css("background-color", "#000");
+	});
+	
 }
-
+function loginOut(){
+	$(".login-btn").css("display","block");
+	$(".login-out").css("display","none");
+	$(".hello").css("display","none");
+	$(".collect-btn").css("display","none");
+	$.cookie("login-in",null);
+}
 function index(data) {
 	var oDiv = $("#inner").find("div");
 	for(var i in data) {
@@ -161,6 +196,12 @@ function indexNav(data) {
 		$(this).find("ul").remove();
 	})
 	$("#animateDiv").css("height", $("#top").css("height"));
+	if($.cookie("login-in")){
+		$(".login-btn").css("display","none");
+		$(".login-out").css("display","block");
+		$(".hello").css("display","block");
+		$(".collect-btn").css("display","block");
+	}
 }
 
 function findShow() {
@@ -543,6 +584,7 @@ function Cabancoat(data) {
 	});
 	$("#coverDiv").css("height", $("#middle").height());
 }
+var is = false;
 
 function isName() {
 	var oValue = $(this).val().replace(/\s/g, "");
@@ -551,28 +593,34 @@ function isName() {
 	if(pattern.test($(this).val())) {
 		$(this).css("border", "1px solid #A9A9A9");
 		$(".name-hint").html("&nbsp;");
+		is = true;
 	} else if($(this).val().length == 0) {
 		$(this).css("border", "1px solid red");
 		$(".name-hint").html("*必填");
+		is = false;
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".name-hint").html("请您确认姓名");
+		is = false;
 	}
 }
 
 function isSurname() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
-	var pattern = /^[\u4e00-\u9fa5]{2,4}$|^[a-zA-Z]{1,30}$/gi;
+	var pattern = /^[\u4e00-\u9fa5]{1,4}$|^[a-zA-Z]{1,30}$/gi;
 	if(pattern.test($(this).val())) {
 		$(this).css("border", "1px solid #A9A9A9");
 		$(".surname-hint").html("&nbsp;");
+		is = true;
 	} else if($(this).val().length == 0) {
 		$(this).css("border", "1px solid red");
 		$(".surname-hint").html("*必填");
+		is = false;
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".surname-hint").html("请您确认姓名");
+		is = false;
 	}
 }
 
@@ -583,12 +631,15 @@ function isEmail() {
 	if(pattern.test($(this).val())) {
 		$(this).css("border", "1px solid #A9A9A9");
 		$(".email-hint").html("&nbsp;");
+		is = true;
 	} else if($(this).val().length == 0) {
 		$(this).css("border", "1px solid red");
 		$(".email-hint").html("*必填");
+		is = false;
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".email-hint").html("请输入正确的电子邮箱地址");
+		is = false;
 	}
 }
 
@@ -598,12 +649,15 @@ function isAffirm() {
 	if($(this).val().length == 0) {
 		$(this).css("border", "1px solid red");
 		$(".affirm-hint").html("*必填");
+		is = false;
 	} else if($(this).val() == $(".email-inp").val()) {
 		$(this).css("border", "1px solid #A9A9A9");
 		$(".affirm-hint").html("&nbsp;");
+		is = true;
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".affirm-hint").html("电子邮箱地址不符");
+		is = false;
 	}
 }
 
@@ -614,12 +668,15 @@ function isPass() {
 	if(pattern.test($(this).val())) {
 		$(this).css("border", "1px solid #A9A9A9");
 		$(".pass-hint").html("&nbsp;");
+		is = true;
 	} else if($(this).val().length == 0) {
 		$(this).css("border", "1px solid red");
 		$(".pass-hint").html("*必填");
+		is = false;
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".pass-hint").html("请核对您当前使用的密码");
+		is = false;
 	}
 }
 
@@ -629,12 +686,15 @@ function isVerify() {
 	if($(this).val().length == 0) {
 		$(this).css("border", "1px solid red");
 		$(".verify-hint").html("*必填");
+		is = false;
 	} else if($(this).val() == $(".pass-inp").val()) {
 		$(this).css("border", "1px solid #A9A9A9");
 		$(".verify-hint").html("&nbsp;");
+		is = true;
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".verify-hint").html("两次所输入的密码不匹配");
+		is = false;
 	}
 }
 
@@ -676,8 +736,49 @@ function onOff() {
 	if($(this).attr("class") == "off") {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -771px");
 		$(this).addClass("on").removeClass("off");
+		is = true;
 	} else {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -709px");
 		$(this).addClass("off").removeClass("on");
+		is = false;
+	}
+}
+
+function registe() {
+	if(is) {
+		var first = $.cookie("login") == null ? true : false;
+		var same = false;
+		if(first) {
+			$.cookie("login", '[{username:"' + $(".email-inp").val() + '",password:"' + $(".pass-inp").val() + '",name:"' + $(".name-inp").val() + '"}]', {
+				expires: 7
+			});
+			location.href = "index.html";
+		} else {
+			var str = $.cookie("login");
+			var arr = eval(str);
+			for(var i in arr) {
+				if(arr[i].username == $(".email-inp").val()) {
+					$(".email-inp").css("border", "1px solid red");
+					$(".email-hint").html("此电子邮箱已被注册");
+					is = false;
+					same = true;
+				}
+			}
+			if(!same) {
+				var obj = {
+					username: $(".email-inp").val(),
+					password: $(".pass-inp").val(),
+					name: $(".name-inp").val()
+				};
+				arr.push(obj);
+				var cookie = JSON.stringify(arr);
+				$.cookie("login", cookie, {
+					expires: 7
+				});
+				location.href = "index.html";
+			}
+		}
+	} else {
+		alert("请检查输入的信息是否有误");
 	}
 }

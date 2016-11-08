@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<title>
-			男士 Caban coat | Giorgio Armani 
+			男士 Caban coat | Giorgio Armani
 		</title>
-		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<link rel="shortcut icon" href="img/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
-		<link rel="stylesheet" type="text/css" href="css/giorgiostyle.css"/>
-		<link rel="stylesheet" type="text/css" href="css/Cabancoatstyle.css"/>
+		<link rel="stylesheet" type="text/css" href="css/giorgiostyle.css" />
+		<link rel="stylesheet" type="text/css" href="css/Cabancoatstyle.css" />
 		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/function.js"></script>
 	</head>
+
 	<body>
 		<div id="box">
 			<div id="top">
@@ -27,7 +29,12 @@
 						<span class="shop-delete"></span>
 					</div>
 					<div class="shop-message">
-						<p>您的购物袋中有0件商品</p>
+						<p class="shop-text">您的购物袋中有0件商品</p>
+						<div class="prev-shop"></div>
+						<div class="wrapper">
+							<div class="wrapper-item"></div>
+						</div>
+						<div class="next-shop"></div>
 					</div>
 				</div>
 				<div id="login">
@@ -47,15 +54,15 @@
 						<h2>我的账户</h2>
 						<p class="hint">输入您的电子邮箱及密码登录“我的账户”</p>
 						<form>
-							<input class="username" type="text" placeholder="电子邮件地址"/>
+							<input class="username" type="text" placeholder="电子邮件地址" />
 							<p class="username-hint">&nbsp;</p>
-							<input class="password" type="text" placeholder="密码"/>
+							<input class="password" type="text" placeholder="密码" />
 							<span class="forget">您忘记了密码？</span>
 							<p class="password-hint">&nbsp;</p>
 							<div class="remember">
 								<span class="select"></span>
 								<span class="remember-text">下次请记住我的信息</span>
-							</div>	
+							</div>
 							<button>登录</button>
 						</form>
 					</div>
@@ -66,8 +73,18 @@
 					</div>
 					<div class="top-nav">
 						<ul></ul>
+						<div class="hello">
+							<span>欢迎 会员</span>
+						</div>
 						<div class="login-btn">
 							<span class="logtext">登录</span>
+						</div>
+						<div class="login-out">
+							<span class="logtext">退出</span>
+						</div>
+						<div class="collect-btn">
+							<span class="collect-ico"></span>
+							<span class="collectNum">0</span>
 						</div>
 						<div class="shop-btn">
 							<span class="shopbtn-ico"></span>
@@ -101,7 +118,7 @@
 							<span class="backto">回到搜索结果</span>
 							<span class="back-btn">
 								<span class="back-prev"></span>
-								<span class="back-next"></span>
+							<span class="back-next"></span>
 							</span>
 						</div>
 						<h4 class="title"></h4>
@@ -150,7 +167,7 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		$(function(){
+		$(function() {
 			$.ajax({
 				url: "json/nav.json",
 				type: "get",
@@ -170,19 +187,20 @@
 			$(".login-btn").click(loginShow);
 			$(".login-delete").click(loginShow);
 			$(".find").click(findShow);
+			$(".login-out").click(loginOut);
 			$(document).scroll(goTopShow);
 			$(".gotop").click(goTop);
 			$.ajax({
 				url: "json/footsite.json",
 				type: "get",
-				success: function(data){
+				success: function(data) {
 					footsite(data);
 				}
 			});
 			$.ajax({
 				url: "json/giorgionav.json",
 				type: "get",
-				success: function(data){
+				success: function(data) {
 					giorgioNav(data);
 					$(".menutitle-link").eq(0).click();
 					$(".menuname-link").eq(1).click();
@@ -192,13 +210,38 @@
 			$.ajax({
 				url: "json/Cabancoat.json",
 				type: "get",
-				success: function(data){
+				success: function(data) {
 					Cabancoat(data);
 				}
 			});
-			$(window).resize(function(){
-   				$("#coverDiv").css("height", $("#middle").height());
-			});		
+			$(".addshop").click(function() {
+				$(".shop-btn").css({
+					background: "#222",
+					color: "#fff"
+				});
+				$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3031px");
+				$("#shop-cart").animate({
+					height: 374
+				}, 500, "linear");
+				$("#coverDiv").css("display", "block");
+				$(".shop-text").css("display","none");
+				$(".wrapper").css("display","block");
+				/*
+					<div class="shop-item">
+						<div class="item-img">
+							<img src="img/41666759HO_11_n_f.jpg"/>
+						</div>
+						<div class="item-brand">GIORGIO ARMANI</div>
+						<div class="item-category">骑兵斜面料大廓形卡班外套</div>
+						<div class="item-info">数量：2</div>
+						<div class="item-price">￥5，200</div>
+					</div>
+							*/
+			})
+			$(window).resize(function() {
+				$("#coverDiv").css("height", $("#middle").height());
+			});
 		});
 	</script>
+
 </html>

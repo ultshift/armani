@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/function.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	</head>
 
 	<body>
@@ -28,7 +29,12 @@
 						<span class="shop-delete"></span>
 					</div>
 					<div class="shop-message">
-						<p>您的购物袋中有0件商品</p>
+						<p class="shop-text">您的购物袋中有0件商品</p>
+						<div class="prev-shop"></div>
+						<div class="wrapper">
+							<div class="wrapper-item"></div>
+						</div>
+						<div class="next-shop"></div>
 					</div>
 				</div>
 				<div id="login">
@@ -67,8 +73,18 @@
 					</div>
 					<div class="top-nav">
 						<ul></ul>
+						<div class="hello">
+							<span>欢迎 会员</span>
+						</div>
 						<div class="login-btn">
 							<span class="logtext">登录</span>
+						</div>
+						<div class="login-out">
+							<span class="logtext">退出</span>
+						</div>
+						<div class="collect-btn">
+							<span class="collect-ico"></span>
+							<span class="collectNum">0</span>
 						</div>
 						<div class="shop-btn">
 							<span class="shopbtn-ico"></span>
@@ -263,6 +279,7 @@
 			$(".login-btn").click(loginShow);
 			$(".login-delete").click(loginShow);
 			$(".find").click(findShow);
+			$(".login-out").click(loginOut);
 			$(".name-inp").blur(isName);
 			$(".surname-inp").blur(isSurname);
 			$(".email-inp").blur(isEmail);
@@ -282,6 +299,7 @@
 					"color": "#fff"
 				});
 			});
+			$(".profile button").click(registe);
 			$.ajax({
 				url: "json/footsite.json",
 				type: "get",
