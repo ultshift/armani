@@ -61,6 +61,10 @@
 	padding: 40px 60px;
 	overflow: hidden;
 }
+.profile form{
+	overflow: hidden;
+	margin-bottom: 30px;
+}
 .registry{
 	float: left;
 	width: 490px;
@@ -96,8 +100,85 @@
 	float: left;
 	width: 370px;
 	margin-top: 30px;
-	padding: 0 30px;
+	padding: 30px 0;
 	border-top: 1px solid #d1d1d1;
 	overflow: hidden;
 }
-
+.cont{
+	height: 36px;
+	overflow: hidden;
+	border: 1px solid #000;
+	margin-top: 10px;
+	position: relative;
+}
+.cont-close{
+	cursor: pointer;
+	width: 11px;
+	height: 6px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -230px;
+	position: absolute;
+	right: 10px;
+	margin-top: 16px;
+	z-index: 100;
+}
+.cont-item{
+	cursor: pointer;
+	height: 36px;
+	color: #b7b7b7;
+}
+.cont-item span{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #000;
+	float: left;
+	margin: 10px;
+}
+.cont-item p{
+	line-height: 33px;
+}
+.preference .default{
+	color: #000;
+}
+.preference .default span{
+	background-color: #000;
+}
+.recap-cont{
+	display: none;
+	border: 1px solid #000;
+	margin-top: 20px;
+}
+.privacy{
+	color: #b7b7b7;
+	line-height: 24px;
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+	border-bottom: 1px solid #d1d1d1;
+}
+.privacy span{
+	color: #000;
+}
+.pratials{
+	color: #b7b7b7;
+	margin: 30px 0;
+	line-height: 20px;
+}
+.pratials span{
+	cursor: pointer;
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -709px;
+	float: left;
+	margin-right: 10px;
+}
+.profile button{
+	display: block;
+	border: 0;
+	cursor: pointer;
+	padding: 10px 48px;
+	font-size: 10px;
+	color: #fff;
+	background-color: #000;
+	float: right;
+}

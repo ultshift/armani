@@ -606,6 +606,7 @@ function isAffirm() {
 		$(".affirm-hint").html("电子邮箱地址不符");
 	}
 }
+
 function isPass() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -619,8 +620,9 @@ function isPass() {
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".pass-hint").html("请核对您当前使用的密码");
-	} 
+	}
 }
+
 function isVerify() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -633,5 +635,49 @@ function isVerify() {
 	} else {
 		$(this).css("border", "1px solid red");
 		$(".verify-hint").html("两次所输入的密码不匹配");
+	}
+}
+
+function contClose() {
+	if($(".cont").height() <= 40) {
+		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -262px");
+		$(".cont").animate({
+			height: 540
+		}, 500, "linear");
+	} else {
+		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -230px");
+		$(".cont").animate({
+			height: 36
+		}, 500, "linear");
+	}
+	$(".cont-item").click(function() {
+		$(".cont-item:first").removeClass("default");
+		var oTitle = $(this).attr("title");
+		if($(this).attr("class") == "cont-item default") {
+			$(this).removeClass("default");
+			for(var i = 0; i < $(".recap-cont div").length; i++) {
+				if($(".recap-cont div").eq(i).attr("title") == oTitle) {
+					$(".recap-cont div").eq(i).remove();
+					if($(".recap-cont div").length == 0) {
+						$(".recap-cont").css("display", "none");
+					}
+				}
+			}
+		} else {
+			$(this).addClass("default");
+			$(this).clone().appendTo($(".recap-cont"));
+			$(".recap-cont").css("display", "block");
+		}
+
+	});
+}
+
+function onOff() {
+	if($(this).attr("class") == "off") {
+		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -771px");
+		$(this).addClass("on").removeClass("off");
+	} else {
+		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -709px");
+		$(this).addClass("off").removeClass("on");
 	}
 }

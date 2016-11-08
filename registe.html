@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<title>
 			Armani.cn - 我的账户 -
 		</title>
-		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<link rel="shortcut icon" href="img/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
-		<link rel="stylesheet" type="text/css" href="css/registe.css"/>
+		<link rel="stylesheet" type="text/css" href="css/registe.css" />
 		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/function.js"></script>
 	</head>
+
 	<body>
 		<div id="box">
 			<div id="top">
@@ -46,15 +48,15 @@
 						<h2>我的账户</h2>
 						<p class="hint">输入您的电子邮箱及密码登录“我的账户”</p>
 						<form>
-							<input class="username" type="text" placeholder="电子邮件地址"/>
+							<input class="username" type="text" placeholder="电子邮件地址" />
 							<p class="username-hint">&nbsp;</p>
-							<input class="password" type="text" placeholder="密码"/>
+							<input class="password" type="text" placeholder="密码" />
 							<span class="forget">您忘记了密码？</span>
 							<p class="password-hint">&nbsp;</p>
 							<div class="remember">
 								<span class="select"></span>
 								<span class="remember-text">下次请记住我的信息</span>
-							</div>	
+							</div>
 							<button>登录</button>
 						</form>
 					</div>
@@ -150,8 +152,92 @@
 						</div>
 						<div class="preference">
 							<p>请选择您所偏爱的品牌，获得最新时事资讯。</p>
+							<div class="cont">
+								<div class="cont-close"></div>
+								<div class="cont-item default" title="1">
+									<span></span>
+									<p>全部品牌</p>
+								</div>
+								<div class="cont-item" title="2">
+									<span></span>
+									<p>Armani Beauty</p>
+								</div>
+								<div class="cont-item" title="3">
+									<span></span>
+									<p>Armani/Casa</p>
+								</div>
+								<div class="cont-item" title="4">
+									<span></span>
+									<p>Armani Collezioni</p>
+								</div>
+								<div class="cont-item" title="4">
+									<span></span>
+									<p>Armani/Dolci</p>
+								</div>
+								<div class="cont-item" title="5">
+									<span></span>
+									<p>EA7</p>
+								</div>
+								<div class="cont-item" title="6">
+									<span></span>
+									<p>Emporio Armani</p>
+								</div>
+								<div class="cont-item" title="7">
+									<span></span>
+									<p>Armani Exchange</p>
+								</div>
+								<div class="cont-item" title="8">
+									<span></span>
+									<p>Armani/Fiori</p>
+								</div>
+								<div class="cont-item" title="9">
+									<span></span>
+									<p>Giorgio Armani</p>
+								</div>
+								<div class="cont-item" title="10">
+									<span></span>
+									<p>Armani/Hotels</p>
+								</div>
+								<div class="cont-item" title="11">
+									<span></span>
+									<p>Armani Jeans</p>
+								</div>
+								<div class="cont-item" title="12">
+									<span></span>
+									<p>Armani Junior</p>
+								</div>
+								<div class="cont-item" title="13">
+									<span></span>
+									<p>Armani Prive</p>
+								</div>
+								<div class="cont-item" title="14">
+									<span></span>
+									<p>Armani/Ristorante</p>
+								</div>
+							</div>
+							<div class="recap-cont"></div>
 						</div>
 					</form>
+					<div class="privacy">
+						Giorgio Armani S.p.A 将利用您的个人数据改善您的网站浏览体验、提高结账流程速度、访问专属区域、向您提供时事通讯订阅服务（你可以选择订阅）并从总体上完善我们的服务。</br> YOOX NET-A-PORTER GROUP集团负责运营管理Giorgio Armani集团官方购物网站上进行的产品销售和交易活动，例如，管理订单、销售、产品配送、退货、质保以及为了在Giorgio Armani集团官方购物网站上销售产品所需的其它活动。 YOOX NET-A-PORTER GROUP集团以及Giorgio Armani S.p.A. 将妥善保管您的资料。</br> 查看<span>隐私声明</span>，了解详细信息。
+					</div>
+					<div class="pratials">
+						<span class="off"></span>
+						<p>我同意弥尚和Giorgio Armani S.p.A. 以营销（电子邮件通讯、新闻和促销）目的收集个人信息</p>
+					</div>
+					<div class="pratials">
+						<span class="off"></span>
+						<p>我同意YOOX NET-A-PORTER GROUP和乔治阿玛尼可以收集个人信息、创建我的购物习惯档案</p>
+					</div>
+					<button>确认</button>
+				</div>
+			</div>
+			<div id="foot">
+				<div class="open-site">
+					<span></span>
+				</div>
+				<div class="site">
+					<ul></ul>
 				</div>
 			</div>
 		</div>
@@ -175,7 +261,7 @@
 			$(".shop-btn").click(shopCartShow);
 			$(".shop-delete").click(shopCartShow);
 			$(".login-btn").click(loginShow);
-			$(".login-delete").click(loginShow);	
+			$(".login-delete").click(loginShow);
 			$(".find").click(findShow);
 			$(".name-inp").blur(isName);
 			$(".surname-inp").blur(isSurname);
@@ -183,6 +269,27 @@
 			$(".affirm-inp").blur(isAffirm);
 			$(".pass-inp").blur(isPass);
 			$(".verify-inp").blur(isVerify);
+			$(".cont-close").click(contClose);
+			$(".pratials span").click(onOff);
+			$(".profile button").hover(function() {
+				$(this).css({
+					"background-color": "#989898",
+					"color": "#fff"
+				});
+			}, function() {
+				$(this).css({
+					"background-color": "#000",
+					"color": "#fff"
+				});
+			});
+			$.ajax({
+				url: "json/footsite.json",
+				type: "get",
+				success: function(data) {
+					footsite(data);
+				}
+			});
 		});
 	</script>
+
 </html>
