@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/function.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	</head>
 
 	<body>
@@ -168,6 +169,11 @@
 	</body>
 	<script type="text/javascript">
 		$(function() {
+			if($.cookie("goods")){
+				$(".shop-text").css("display", "none");
+				$(".wrapper").css("display", "block");
+				sc_msg();
+			}
 			$.ajax({
 				url: "json/nav.json",
 				type: "get",
@@ -208,36 +214,13 @@
 				}
 			});
 			$.ajax({
-				url: "json/Cabancoat.json",
+				url: "json/newArrival.json",
 				type: "get",
 				success: function(data) {
 					Cabancoat(data);
 				}
 			});
-			$(".addshop").click(function() {
-				$(".shop-btn").css({
-					background: "#222",
-					color: "#fff"
-				});
-				$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3031px");
-				$("#shop-cart").animate({
-					height: 374
-				}, 500, "linear");
-				$("#coverDiv").css("display", "block");
-				$(".shop-text").css("display","none");
-				$(".wrapper").css("display","block");
-				/*
-					<div class="shop-item">
-						<div class="item-img">
-							<img src="img/41666759HO_11_n_f.jpg"/>
-						</div>
-						<div class="item-brand">GIORGIO ARMANI</div>
-						<div class="item-category">骑兵斜面料大廓形卡班外套</div>
-						<div class="item-info">数量：2</div>
-						<div class="item-price">￥5，200</div>
-					</div>
-							*/
-			})
+			$(".addshop").click(addGoods);	
 			$(window).resize(function() {
 				$("#coverDiv").css("height", $("#middle").height());
 			});

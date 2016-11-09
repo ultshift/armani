@@ -35,6 +35,73 @@ function shopCartShow() {
 	}
 }
 
+function sc_msg() {
+	$.ajax({
+		url: "json/Cabancoat.json",
+		type: "get",
+		success: function(data) {
+			var sc_str = $.cookie("goods");
+			if(sc_str) {
+				var arr = eval(sc_str);
+				for(var i in arr) {
+					$('<div class="shop-item"><div class="item-img"><img src="' + data[i].nfimg + '"/></div><div class="item-brand">GIORGIO ARMANI</div><div class="item-category">' + data[i].title + '</div><div class="item-info">数量：' + arr[i].num + '</div><div class="item-price">￥' + arr[i].price + '</div></div>').appendTo($(".wrapper-item"));
+				}
+			}
+		}
+	});
+}
+
+function addGoods() {
+	$(".shop-btn").css({
+		background: "#222",
+		color: "#fff"
+	});
+	$(".shopbtn-ico").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3031px");
+	$("#shop-cart").animate({
+		height: 374
+	}, 500, "linear");
+	$("#coverDiv").css("display", "block");
+	$(".shop-text").css("display", "none");
+	$(".wrapper").css("display", "block");
+	$(".wrapper-item").empty();
+	sc_msg();
+	var id = $(this).attr("title");
+	var price = $(this).attr("price");
+	var first = $.cookie("goods") == null ? true : false;
+	var same = false;
+	if(first) {
+		$.cookie('goods', '[{id:"' + id + '",price:"' + price + '",num:"1"}]', {
+			expires: 7
+		});
+	} else {
+		var str = $.cookie("goods");
+		var arr = eval(str);
+		for(var i in arr) {
+			if(arr[i].id == id) {
+				arr[i].num++;
+				arr[i].price = Number(arr[i].price) + Number(price);
+				var cookieStr = JSON.stringify(arr);
+				$.cookie("goods", cookieStr, {
+					expires: 7
+				});
+				same = true;
+			}
+		}
+		if(!same) {
+			var obj = {
+				id: id,
+				price: price,
+				num: "1"
+			};
+			arr.push(arr);
+			var cookieStr = JSON.stringify(arr);
+			$.cookie("goods", cookieStr, {
+				expires: 7
+			});
+		}
+	}
+}
+
 function loginShow() {
 	if($("#shop-cart").height() == 374) {
 		$("#shop-cart").css("height", "0");
@@ -86,19 +153,19 @@ function loginShow() {
 		$(this).val(oValue);
 		var str = $.cookie("login");
 		var arr = eval(str);
-		for(var i in arr){
-			if($(this).val() == arr[i].username){
+		for(var i in arr) {
+			if($(this).val() == arr[i].username) {
 				$(this).css("border", "1px solid #A9A9A9");
 				$(".username-hint").html("&nbsp;");
 				username = true;
 				login_index = i;
-			}	
+			}
 		}
-		if(!username){
+		if(!username) {
 			$(this).css("border", "1px solid red");
 			$(".username-hint").html("无效的电子邮箱地址");
 		}
-		
+
 	});
 	var pass = false;
 	$(".password").blur(function() {
@@ -106,24 +173,24 @@ function loginShow() {
 		$(this).val(oValue);
 		var str = $.cookie("login");
 		var arr = eval(str);
-		for(var i in arr){
-			if(i == login_index && $(this).val() == arr[i].password){
+		for(var i in arr) {
+			if(i == login_index && $(this).val() == arr[i].password) {
 				$(this).css("border", "1px solid #A9A9A9");
 				$(".password-hint").html("&nbsp;");
 				pass = true;
-			}	
+			}
 		}
-		if(!pass){
+		if(!pass) {
 			$(this).css("border", "1px solid red");
 			$(".password-hint").html("密码不符");
-		}	
+		}
 	});
-	$("#login_in").click(function(){
-		if(username && pass){
-			$(".login-btn").css("display","none");
-			$(".login-out").css("display","block");
-			$(".hello").css("display","block");
-			$(".collect-btn").css("display","block");
+	$("#login_in").click(function() {
+		if(username && pass) {
+			$(".login-btn").css("display", "none");
+			$(".login-out").css("display", "block");
+			$(".hello").css("display", "block");
+			$(".collect-btn").css("display", "block");
 			$("#login").animate({
 				height: 0
 			}, 500, "linear");
@@ -131,9 +198,11 @@ function loginShow() {
 				background: "#fff",
 				color: "#999"
 			});
-			$.cookie("login-in","[{titlt:1}]",{expires:7});
+			$.cookie("login-in", "[{titlt:1}]", {
+				expires: 7
+			});
 			$("#coverDiv").css("display", "none");
-		}else{
+		} else {
 			alert("请输入正确的信息");
 		}
 	});
@@ -152,15 +221,17 @@ function loginShow() {
 	}, function() {
 		$(this).css("background-color", "#000");
 	});
-	
+
 }
-function loginOut(){
-	$(".login-btn").css("display","block");
-	$(".login-out").css("display","none");
-	$(".hello").css("display","none");
-	$(".collect-btn").css("display","none");
-	$.cookie("login-in",null);
+
+function loginOut() {
+	$(".login-btn").css("display", "block");
+	$(".login-out").css("display", "none");
+	$(".hello").css("display", "none");
+	$(".collect-btn").css("display", "none");
+	$.cookie("login-in", null);
 }
+
 function index(data) {
 	var oDiv = $("#inner").find("div");
 	for(var i in data) {
@@ -196,11 +267,11 @@ function indexNav(data) {
 		$(this).find("ul").remove();
 	})
 	$("#animateDiv").css("height", $("#top").css("height"));
-	if($.cookie("login-in")){
-		$(".login-btn").css("display","none");
-		$(".login-out").css("display","block");
-		$(".hello").css("display","block");
-		$(".collect-btn").css("display","block");
+	if($.cookie("login-in")) {
+		$(".login-btn").css("display", "none");
+		$(".login-out").css("display", "block");
+		$(".hello").css("display", "block");
+		$(".collect-btn").css("display", "block");
 	}
 }
 
@@ -513,7 +584,16 @@ function newArrivalnav(data) {
 
 function newArrival(data) {
 	for(var i in data) {
-		$('<div class="item"><a href="' + data[i].href + '" class="item-pic"><img class="photo current" src="' + data[i].nfimg + '"/><img class="photo" src="' + data[i].nrimg + '"/></a><div class="item-text"><p class="item-title">' + data[i].title + '</p><p class="item-prico">' + data[i].prico + '</p><p class="item-size">' + data[i].size + '</p></div></div>').appendTo($(".center-page"));
+		var pri = data[i].price;
+		pri = pri / 1000;
+		pri = String(pri);
+		if(pri.indexOf(".") == -1){
+			pri = pri + "," + "000";
+		}else{
+			pri = pri.split(".");
+			pri = pri[0] + "," + pri[1] + "00";
+		}
+		$('<div class="item"><a href="' + data[i].href + '" class="item-pic"><img class="photo current" src="' + data[i].nfimg + '"/><img class="photo" src="' + data[i].nrimg + '"/></a><div class="item-text"><p class="item-title">' + data[i].title + '</p><p class="item-prico">￥' + pri + '</p><p class="item-size">' + data[i].size_new + '</p></div></div>').appendTo($(".center-page"));
 	}
 	$(".item").hover(function() {
 		$(this).find(".photo").removeClass("current");
@@ -532,11 +612,28 @@ function newArrival(data) {
 function Cabancoat(data) {
 	$('<img src="' + data[0].nfimg + '" /><img src="' + data[0].nrimg + '" /><img src="' + data[0].ndimg + '" />').appendTo($(".master"));
 	$(".title").html(data[0].title);
-	$(".price").html(data[0].price);
-	$(".color").html(data[0].color);
-	for(var i in data[0].size) {
-		$('<option>' + data[0].size[i].num + '</option>').appendTo($(".size"));
+	var pri = data[0].price;
+	pri = pri / 1000;
+	pri = String(pri);
+	if(pri.indexOf(".") == -1){
+		pri = pri + "," + "000";
+	}else{
+		pri = pri.split(".");
+		pri = pri[0] + "," + pri[1] + "00";
 	}
+	$(".price").html("￥" + pri);
+	$(".color").html(data[0].color);
+	for(var i in data[0].size_coat) {
+		$('<option>' + data[0].size_coat[i].num + '</option>').appendTo($(".size"));
+	}
+	$(".addshop").attr({
+		"title": data[0].id,
+		"price": data[0].price
+	});
+	$(".collect").attr({
+		"title": data[0].id,
+		"price": data[0].price
+	});
 	$(".coding").html(data[0].coding);
 	$(".tabs-text").eq(0).html(data[0].texture);
 	$('<ul class="tabs-list"></ul>').appendTo($(".tabs-text").eq(1));
@@ -584,6 +681,7 @@ function Cabancoat(data) {
 	});
 	$("#coverDiv").css("height", $("#middle").height());
 }
+
 var is = false;
 
 function isName() {
