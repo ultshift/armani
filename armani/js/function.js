@@ -1,3 +1,4 @@
+//购物车显示与隐藏
 function shopCartShow() {
 	if($("#login").height() == 374) {
 		$("#login").css("height", "0");
@@ -34,7 +35,7 @@ function shopCartShow() {
 		$("#coverDiv").css("display", "none");
 	}
 }
-
+//添加购物车
 function sc_msg() {
 	$.ajax({
 		url: "json/newArrival.json",
@@ -61,11 +62,13 @@ function sc_msg() {
 				$(".wrapper").css("display", "none");
 				$(".settle").css("display", "none");
 			}
+			//删除购物车商品按键显示与隐藏
 			$(".shop-item").hover(function(){
 				$(this).find(".item-delete").css("display","block");
 			},function(){
 				$(this).find(".item-delete").css("display","none");
 			});
+			//删除购物车商品信息
 			$(".item-delete").click(function(){
 				var id = $(this).attr("id");
 				var sc_str = $.cookie("goods");
@@ -89,7 +92,7 @@ function sc_msg() {
 		}
 	});
 }
-
+//添加购物车cookie
 function addGoods() {
 	$(".shop-btn").css({
 		background: "#222",
@@ -143,6 +146,7 @@ function addGoods() {
 	sc_car();
 	sc_price();
 }
+//购物车总数量
 function sc_car(){
 	var sc_str = $.cookie("goods");
 	if(sc_str){
@@ -154,6 +158,7 @@ function sc_car(){
 		$(".shopNum").html(sc_num);
 	}
 }
+//购物车总金额
 function sc_price(){
 	var sc_str = $.cookie("goods");
 	if(sc_str){
@@ -174,6 +179,7 @@ function sc_price(){
 		$(".shopMoneyNum").html(pri);
 	}
 }
+//登录窗口显示与隐藏
 function loginShow() {
 	if($("#shop-cart").height() == 374) {
 		$("#shop-cart").css("height", "0");
@@ -218,6 +224,7 @@ function loginShow() {
 			"color": "#000"
 		});
 	});
+	//判断用户名是否可用
 	var login_index = null;
 	var username = false;
 	$(".username").blur(function() {
@@ -239,6 +246,7 @@ function loginShow() {
 		}
 
 	});
+	//判断密码是否正确
 	var pass = false;
 	$(".password").blur(function() {
 		var oValue = $(this).val().replace(/\s/g, "");
@@ -257,6 +265,7 @@ function loginShow() {
 			$(".password-hint").html("密码不符");
 		}
 	});
+	//点击登录
 	$("#login_in").click(function() {
 		if(username && pass) {
 			$(".login-btn").css("display", "none");
@@ -278,6 +287,7 @@ function loginShow() {
 			alert("请输入正确的信息");
 		}
 	});
+	//选择是否记住信息
 	var selectdown = true;
 	$(".select").click(function() {
 		if(selectdown) {
@@ -288,6 +298,7 @@ function loginShow() {
 			selectdown = true;
 		}
 	});
+	//登录按钮样式变化
 	$("#login_in").hover(function() {
 		$(this).css("background-color", "#989898");
 	}, function() {
@@ -295,7 +306,7 @@ function loginShow() {
 	});
 
 }
-
+//点击退出
 function loginOut() {
 	$(".login-btn").css("display", "block");
 	$(".login-out").css("display", "none");
@@ -303,7 +314,7 @@ function loginOut() {
 	$(".collect-btn").css("display", "none");
 	$.cookie("login-in", null);
 }
-
+//首页信息加载
 function index(data) {
 	var oDiv = $("#inner").find("div");
 	for(var i in data) {
@@ -322,7 +333,7 @@ function index(data) {
 	}
 	$("#coverDiv").css("height", $("#inner").height());
 }
-
+//首页下拉菜单加载
 function indexNav(data) {
 	for(var i in data) {
 		$("<li></li>").html(data[i].title).appendTo($(".bottom-nav").find("ul"));
@@ -346,7 +357,7 @@ function indexNav(data) {
 		$(".collect-btn").css("display", "block");
 	}
 }
-
+//搜索按钮的样式变化
 function findShow() {
 	if($(".find").width() < 200) {
 		$(this).animate({
@@ -363,13 +374,13 @@ function findShow() {
 		$(".find-inp").remove();
 	}
 }
-
+//首页菜单加载
 function nav(data) {
 	for(var i = 0; i < data.length; i++) {
 		$("<li></li>").html(data[i].title).appendTo($(".top-nav").find("ul"));
 	}
 }
-
+//置顶按钮显示与隐藏
 function goTopShow() {
 	if($(document).scrollTop() > 0) {
 		$(".gotop").css("display", "block");
@@ -377,7 +388,7 @@ function goTopShow() {
 		$(".gotop").css("display", "none");
 	}
 }
-
+//置顶按钮点击事件
 function goTop() {
 	clearInterval(this.timer);
 	var _this = this;
@@ -391,12 +402,13 @@ function goTop() {
 
 	}, 8)
 }
-
+//页尾菜单加载
 function footsite(data) {
 	for(var i in data) {
 		$('<li class="site-nav site-animate">' + data[i].title + '<ol></ol></li>').appendTo($(".site").find("ul"));
 	}
 	$(".site-nav:first").addClass("site-first").removeClass("site-animate");
+	//页尾菜单点击显示与隐藏
 	$(".open-site").click(function() {
 		if($(".site").find("li").width() < 200) {
 			$(this).find("span").css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -262px");
@@ -426,11 +438,12 @@ function footsite(data) {
 		}
 	})
 }
-
+//giorgio菜单加载
 function giorgioNav(data) {
 	for(var i in data) {
 		$('<li class="menu-title"><a class="menutitle-link" first="' + i + '">' + data[i].title + '</a></li>').appendTo($(".menu-first"));
 	}
+	//点击显示二级菜单
 	$(".menutitle-link").click(function() {
 		$(".menu-second").remove();
 		$('<ul class="menu-second"></ul>').appendTo($(".menu-title").eq($(this).attr("first")));
@@ -443,6 +456,7 @@ function giorgioNav(data) {
 		$(".menuname-link").mouseout(function() {
 			$(this).css("background-color", "#918c80");
 		});
+		//点击显示三级菜单
 		$(".menuname-link").click(function() {
 			$(this).unbind("mouseout");
 			$(".menuname-link").css("background-color", "#918c80");
@@ -464,6 +478,7 @@ function giorgioNav(data) {
 					"color": "#c6c3bd"
 				});
 			});
+			//点击显示详细页面
 			$(".menumessage-link").click(function() {
 				$(".menumessage-link").mouseout(function() {
 					$(this).css({
@@ -484,7 +499,7 @@ function giorgioNav(data) {
 		});
 	});
 }
-
+//giorgio信息加载
 function giorgio(data) {
 	$(".content").css("height", 1.49 * $(".content").width());
 	$("#coverDiv").css("height", $("#middle").height());
@@ -514,6 +529,7 @@ function giorgio(data) {
 	for(var i = 0; i < $(".numbers").length; i++) {
 		$(".numbers").eq(i).css("left", ($(".numbers").eq(i).parents(".pic").width() - $(".numbers").eq(i).width()) / 2);
 	}
+	//轮播图向前滑动
 	$(".prev").click(function() {
 		var _slideme = $(this).siblings(".slideme").find(".current");
 		var _numbers = $(this).siblings(".numbers").find(".current");
@@ -539,6 +555,7 @@ function giorgio(data) {
 			_numbers.prev().addClass("current");
 		}
 	});
+	//轮播图向后滑动
 	$(".next").click(function() {
 		var _slideme = $(this).siblings(".slideme").find(".current");
 		var _numbers = $(this).siblings(".numbers").find(".current");
@@ -564,6 +581,7 @@ function giorgio(data) {
 			_numbers.next().addClass("current");
 		}
 	});
+	//轮播图选择滑动
 	$(".numbers li").click(function() {
 		var _slideme = $(this).parents(".numbers").siblings(".slideme").find(".current");
 		var _numbers = $(this).siblings(".current");
@@ -595,6 +613,7 @@ function giorgio(data) {
 			$(this).addClass("current");
 		}
 	});
+	//选购按钮样式变化
 	$(".choose-btn").hover(function() {
 		$(this).css({
 			"background-color": "#909090",
@@ -607,7 +626,7 @@ function giorgio(data) {
 		});
 	});
 }
-
+//新品上市菜单
 function newArrivalnav(data) {
 	for(var i in data) {
 		$('<li class="filter-btn">' + data[i].title + '</li>').appendTo($(".filter ul"));
@@ -623,12 +642,14 @@ function newArrivalnav(data) {
 			$(".filter-btn").eq(i).find(".square").first().addClass("square-down");
 		}
 	}
+	//新品上市菜单选择
 	$(".filter-menu").mouseover(function() {
 		$(this).find(".square").addClass("square-down");
 	});
 	$(".filter-menu").mouseout(function() {
 		$(this).find(".square").removeClass("square-down");
 	});
+	//新品上市菜单点击选择
 	$(".filter-menu").click(function() {
 		$(this).siblings().mouseout(function() {
 			$(this).find(".square").removeClass("square-down");
@@ -637,23 +658,26 @@ function newArrivalnav(data) {
 		$(this).siblings().find(".square").removeClass("square-down");
 		$(this).find(".square").addClass("square-down");
 	});
+	//新品上市菜单关闭按钮
 	$(".filter-delete").hover(function() {
 		$(this).css("background-color", "#A6A6A6");
 	}, function() {
 		$(this).css("background-color", "#000");
 	});
+	//点击展开新品上市菜单
 	$(".filter-btn").click(function() {
 		$(".filter").animate({
 			height: 400
 		}, 500, "linear");
 	});
+	//点击关闭新品上市菜单
 	$(".filter-delete").click(function() {
 		$(".filter").animate({
 			height: 50
 		}, 500, "linear");
 	})
 }
-
+//新品上市页面加载
 function newArrival(data) {
 	for(var i in data) {
 		var pri = data[i].price;
@@ -680,9 +704,15 @@ function newArrival(data) {
 	});
 	$("#coverDiv").css("height", $("#middle").height());
 }
-
+//详情页加载
 function details(obj) {
-	$('<img src="' + obj.nfimg + '" /><img src="' + obj.nrimg + '" /><img src="' + obj.ndimg + '" />').appendTo($(".master"));
+	$('<div class="goods-box"><img src="' + obj.nfimg + '" /><div class="move"></div></div><div class="goods-box"><img src="' + obj.nrimg + '" /><div class="move"></div></div><div class="goods-box"><img src="' + obj.ndimg + '" /><div class="move"></div></div>').appendTo($(".master"));
+	$(".goods-box").hover(function(){
+		$('<div class="glass"><div class="glass-img"><img src="' + $(this).find("img").attr("src") + '" /></div></div>').appendTo($(".master"));
+		$(".glass").css({"width":$(this).width(),"height":$(this).height(),"left":($(this).position().left + $(this).width()),"top":$(this).position().top});
+	},function(){
+		$(".glass").remove();
+	});
 	$(".title").html(obj.title);
 	var pri = obj.price;
 	pri = pri / 1000;
@@ -724,27 +754,32 @@ function details(obj) {
 	}, function() {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -2562px");
 	});
+	//加入购物车按钮样式变化
 	$(".addshop").hover(function() {
 		$(this).css("background-color", "#949494");
 	}, function() {
 		$(this).css("background-color", "#000");
 	});
+	//添加收藏夹按钮样式变化
 	$(".collect").hover(function() {
 		$(this).css("background-color", "#949494");
 	}, function() {
 		$(this).css("background-color", "#bababa");
 	});
+	//微博样式变化
 	$(".weibo").hover(function() {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3518px");
 	}, function() {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3458px");
 	})
+	//信息样式变化
 	$(".description").hover(function() {
 		$(this).css("border-left", "2px solid #000");
 	}, function() {
 		$(this).css("border-left", "2px solid #fff");
 	});
 	$(".tabs-text:first").css("display", "block");
+	//信息点击收起与显示
 	$(".tabs li").click(function() {
 		$(".tabs li").removeClass("open");
 		$(".tabs-text").slideUp(700);
@@ -753,9 +788,9 @@ function details(obj) {
 	});
 	$("#coverDiv").css("height", $("#middle").height());
 }
-
+//判断注册信息正确的全局变量
 var is = false;
-
+//判断名字是否合法
 function isName() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -774,7 +809,7 @@ function isName() {
 		is = false;
 	}
 }
-
+//判断姓氏是否合法
 function isSurname() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -793,7 +828,7 @@ function isSurname() {
 		is = false;
 	}
 }
-
+//判断邮件是否合法
 function isEmail() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -812,7 +847,7 @@ function isEmail() {
 		is = false;
 	}
 }
-
+//判断确认邮件是否正确
 function isAffirm() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -830,7 +865,7 @@ function isAffirm() {
 		is = false;
 	}
 }
-
+//判断密码是否合法
 function isPass() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -849,7 +884,7 @@ function isPass() {
 		is = false;
 	}
 }
-
+//判断确认密码是否正确
 function isVerify() {
 	var oValue = $(this).val().replace(/\s/g, "");
 	$(this).val(oValue);
@@ -867,7 +902,7 @@ function isVerify() {
 		is = false;
 	}
 }
-
+//注册页面喜好展开与收起
 function contClose() {
 	if($(".cont").height() <= 40) {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -262px");
@@ -880,6 +915,7 @@ function contClose() {
 			height: 36
 		}, 500, "linear");
 	}
+	//点击记录喜好
 	$(".cont-item").click(function() {
 		$(".cont-item:first").removeClass("default");
 		var oTitle = $(this).attr("title");
@@ -901,7 +937,7 @@ function contClose() {
 
 	});
 }
-
+//注册页面确认条例
 function onOff() {
 	if($(this).attr("class") == "off") {
 		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -771px");
@@ -913,7 +949,7 @@ function onOff() {
 		is = false;
 	}
 }
-
+//点击注册，上传cookie
 function registe() {
 	if(is) {
 		var first = $.cookie("login") == null ? true : false;

@@ -6,9 +6,31 @@
 }
 .master{
 	margin-right: 408px;
+	overflow: hidden;
+	position: relative;
 }
-#middle .master img{
+.goods-box{
 	width: 50%;
+	position: relative;
+	overflow: hidden; 
+}
+.move{
+	display: none;
+	position: absolute;
+	background-color: pink;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	z-index: 10;
+}
+.glass{
+	position: absolute;
+	z-index: 20;
+	overflow: hidden;
+}
+.glass-img{
+	width: 300%;
+	position: absolute;
+	overflow: hidden;
 }
 .referral{
 	width: 408px;
