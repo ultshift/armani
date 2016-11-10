@@ -48,42 +48,65 @@ function sc_msg() {
 					var pri = arr[i].price;
 					pri = pri / 1000;
 					pri = String(pri);
-					if(pri.indexOf(".") == -1){
+					if(pri.indexOf(".") == -1) {
 						pri = pri + "," + "000";
-					}else{
+					} else {
 						pri = pri.split(".");
 						pri = pri[0] + "," + pri[1] + "00";
 					}
 					$('<div class="shop-item"><div class="item-img"><img src="' + data[arr[i].id].nfimg + '"/></div><div class="item-brand">GIORGIO ARMANI</div><div class="item-category">' + data[arr[i].id].title + '</div><div class="item-info">数量：' + arr[i].num + '</div><div class="item-price">￥' + pri + '</div><div class="item-delete" id="' + arr[i].id + '"><span></span></div></div>').appendTo($(".wrapper-item"));
 				}
 			}
-			if(arr.length == 0){
+			Slide();
+			//购物车向前轮播按钮
+			$(".prev-shop").click(function() {
+				var prev_left = $(".wrapper-item").position().left;
+				prev_left = prev_left + 160;
+				$(".wrapper-item").animate({
+					left: prev_left
+				}, 500, "linear", function() {
+					Slide();
+				});
+			});
+			//购物车向后轮播按钮
+			$(".next-shop").click(function() {
+				var next_left = $(".wrapper-item").position().left;
+				next_left = next_left - 160;
+				$(".wrapper-item").animate({
+					left: next_left
+				}, 500, "linear", function() {
+					Slide();
+				});
+			});
+			if(arr.length == 0) {
 				$(".shop-text").css("display", "block");
 				$(".wrapper").css("display", "none");
 				$(".settle").css("display", "none");
 			}
 			//删除购物车商品按键显示与隐藏
-			$(".shop-item").hover(function(){
-				$(this).find(".item-delete").css("display","block");
-			},function(){
-				$(this).find(".item-delete").css("display","none");
+			$(".shop-item").hover(function() {
+				$(this).find(".item-delete").css("display", "block");
+			}, function() {
+				$(this).find(".item-delete").css("display", "none");
 			});
 			//删除购物车商品信息
-			$(".item-delete").click(function(){
+			$(".item-delete").click(function() {
 				var id = $(this).attr("id");
 				var sc_str = $.cookie("goods");
 				var sc_arr = eval(sc_str);
-				for(var i in sc_arr){
-					if(id == sc_arr[i].id){
+				for(var i in sc_arr) {
+					if(id == sc_arr[i].id) {
 						$(this).parents(".shop-item").remove();
-						sc_arr.splice(i,1);
+						sc_arr.splice(i, 1);
 						var cookieStr = JSON.stringify(sc_arr);
-						$.cookie("goods",cookieStr,{expires:7});
+						$.cookie("goods", cookieStr, {
+							expires: 7
+						});
 						sc_car();
 						sc_price();
 					}
 				}
-				if(sc_arr.length == 0){
+				if(sc_arr.length == 0) {
 					$(".shop-text").css("display", "block");
 					$(".wrapper").css("display", "none");
 					$(".settle").css("display", "none");
@@ -91,6 +114,19 @@ function sc_msg() {
 			})
 		}
 	});
+}
+//购物车轮播按钮显示与隐藏
+function Slide() {
+	if($(".wrapper-item").position().left > $(".wrapper").width() - $(".shop-item").length * 160) {
+		$(".next-shop").css("visibility", "initial");
+	} else {
+		$(".next-shop").css("visibility", "hidden");
+	}
+	if($(".wrapper-item").position().left < 0) {
+		$(".prev-shop").css("visibility", "initial");
+	} else {
+		$(".prev-shop").css("visibility", "hidden");
+	}
 }
 //添加购物车cookie
 function addGoods() {
@@ -147,32 +183,32 @@ function addGoods() {
 	sc_price();
 }
 //购物车总数量
-function sc_car(){
+function sc_car() {
 	var sc_str = $.cookie("goods");
-	if(sc_str){
+	if(sc_str) {
 		var sc_arr = eval(sc_str);
 		var sc_num = 0;
-		for(var i in sc_arr){
+		for(var i in sc_arr) {
 			sc_num += Number(sc_arr[i].num);
 		}
 		$(".shopNum").html(sc_num);
 	}
 }
 //购物车总金额
-function sc_price(){
+function sc_price() {
 	var sc_str = $.cookie("goods");
-	if(sc_str){
+	if(sc_str) {
 		var sc_arr = eval(sc_str);
 		var sc_money = 0;
-		for(var i in sc_arr){
+		for(var i in sc_arr) {
 			sc_money += Number(sc_arr[i].price);
 		}
 		var pri = sc_money;
 		pri = pri / 1000;
 		pri = String(pri);
-		if(pri.indexOf(".") == -1){
+		if(pri.indexOf(".") == -1) {
 			pri = pri + "," + "000";
-		}else{
+		} else {
 			pri = pri.split(".");
 			pri = pri[0] + "," + pri[1] + "00";
 		}
@@ -683,9 +719,9 @@ function newArrival(data) {
 		var pri = data[i].price;
 		pri = pri / 1000;
 		pri = String(pri);
-		if(pri.indexOf(".") == -1){
+		if(pri.indexOf(".") == -1) {
 			pri = pri + "," + "000";
-		}else{
+		} else {
 			pri = pri.split(".");
 			pri = pri[0] + "," + pri[1] + "00";
 		}
@@ -707,19 +743,60 @@ function newArrival(data) {
 //详情页加载
 function details(obj) {
 	$('<div class="goods-box"><img src="' + obj.nfimg + '" /><div class="move"></div></div><div class="goods-box"><img src="' + obj.nrimg + '" /><div class="move"></div></div><div class="goods-box"><img src="' + obj.ndimg + '" /><div class="move"></div></div>').appendTo($(".master"));
-	$(".goods-box").hover(function(){
-		$('<div class="glass"><div class="glass-img"><img src="' + $(this).find("img").attr("src") + '" /></div></div>').appendTo($(".master"));
-		$(".glass").css({"width":$(this).width(),"height":$(this).height(),"left":($(this).position().left + $(this).width()),"top":$(this).position().top});
-	},function(){
+	//放大镜
+	$(".goods-box").hover(function() {
+		$('<div class="glass"><div class="glass-img"><img src="' + $(this).find("img").attr("src") + '" /></div></div>').appendTo($(".meddle-paga"));
+		$(".glass").css({
+			"width": $(this).width(),
+			"height": $(this).height(),
+			"left": ($(this).position().left + $(this).width()),
+			"top": $(this).position().top
+		});
+		var move_width = $(this).width() / 3;
+		var move_height = $(this).height() / 3;
+		$(this).find(".move").css({
+			"width": move_width,
+			"height": move_height,
+			"display": "block"
+		});
+		$(this).mousemove(function(ev) {
+			var left = ev.pageX - $(this).offset().left - $(this).find(".move").width() / 2;
+			var top = ev.pageY - $(this).offset().top - $(this).find(".move").height() / 2;
+			if(left < 0) {
+				left = 0;
+			} else if(left > $(this).width() - $(this).find(".move").width()) {
+				left = $(this).width() - $(this).find(".move").width();
+			}
+			if(top < 0) {
+				top = 0;
+			} else if(top > $(this).height() - $(this).find(".move").height()) {
+				top = $(this).height() - $(this).find(".move").height();
+			}
+			$(this).find(".move").css({
+				"left": left,
+				"top": top
+			});
+			var ratioX = left / ($(this).width() - $(this).find(".move").width());
+			var ratioY = top / ($(this).height() - $(this).find(".move").height());
+			var gl_left = -ratioX * 2 * $(".glass").width();
+			var gl_top = -ratioY * 2 * $(".glass").height();
+			console.log(gl_left + " , " + gl_top)
+			$(".glass-img").css({
+				"left": gl_left,
+				"top": gl_top
+			});
+		})
+	}, function() {
 		$(".glass").remove();
+		$(this).find(".move").css("display", "none");
 	});
 	$(".title").html(obj.title);
 	var pri = obj.price;
 	pri = pri / 1000;
 	pri = String(pri);
-	if(pri.indexOf(".") == -1){
+	if(pri.indexOf(".") == -1) {
 		pri = pri + "," + "000";
-	}else{
+	} else {
 		pri = pri.split(".");
 		pri = pri[0] + "," + pri[1] + "00";
 	}
@@ -768,11 +845,11 @@ function details(obj) {
 	});
 	//微博样式变化
 	$(".weibo").hover(function() {
-		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3518px");
-	}, function() {
-		$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3458px");
-	})
-	//信息样式变化
+			$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3518px");
+		}, function() {
+			$(this).css("background", "url(img/siteSprite-se41bd8659f.png) no-repeat 0 -3458px");
+		})
+		//信息样式变化
 	$(".description").hover(function() {
 		$(this).css("border-left", "2px solid #000");
 	}, function() {

@@ -9,7 +9,7 @@
 		<title>
 			Armani.cn 官方网络旗舰店
 		</title>
-		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<link rel="shortcut icon" href="img/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
 		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
@@ -56,15 +56,15 @@
 						<h2>我的账户</h2>
 						<p class="hint">输入您的电子邮箱及密码登录“我的账户”</p>
 						<form>
-							<input class="username" type="text" placeholder="电子邮件地址"/>
+							<input class="username" type="text" placeholder="电子邮件地址" />
 							<p class="username-hint">&nbsp;</p>
-							<input class="password" type="text" placeholder="密码"/>
+							<input class="password" type="text" placeholder="密码" />
 							<span class="forget">您忘记了密码？</span>
 							<p class="password-hint">&nbsp;</p>
 							<div class="remember">
 								<span class="select"></span>
 								<span class="remember-text">下次请记住我的信息</span>
-							</div>	
+							</div>
 							<div id="login_in">登录</div>
 						</form>
 					</div>
@@ -114,7 +114,7 @@
 				<div class="most"></div>
 				<div class="less"></div>
 				<div class="half"></div>
-				<div class="half"></div>			
+				<div class="half"></div>
 				<div class="thrid"></div>
 				<div class="thrid"></div>
 				<div class="thrid"></div>
@@ -134,7 +134,7 @@
 	</body>
 	<script type="text/javascript">
 		$(function() {
-			if($.cookie("goods")){
+			if($.cookie("goods")) {
 				$(".shop-text").css("display", "none");
 				$(".wrapper").css("display", "block");
 				$(".settle").css("display", "block");
@@ -159,7 +159,7 @@
 			$(".shop-btn").click(shopCartShow);
 			$(".shop-delete").click(shopCartShow);
 			$(".login-btn").click(loginShow);
-			$(".login-delete").click(loginShow);	
+			$(".login-delete").click(loginShow);
 			$(".find").click(findShow);
 			$(".login-out").click(loginOut);
 			$.ajax({
@@ -174,11 +174,12 @@
 			$.ajax({
 				url: "json/footsite.json",
 				type: "get",
-				success: function(data){
+				success: function(data) {
 					footsite(data);
 				}
 			});
-			$(window).resize(function(){
+			
+			$(window).resize(function() {
 				$("#coverDiv").css("height", $("#inner").height());
 			})
 		});

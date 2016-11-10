@@ -106,7 +106,7 @@ a:hover{
 	width: 9px;
 	height: 17px;
 	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3083px;
-	margin: 146px 24px 0 19px;
+	margin: 146px 1% 0;
 }
 .next-shop{
 	visibility: hidden;
@@ -114,19 +114,22 @@ a:hover{
 	width: 9px;
 	height: 17px;
 	background: url(../img/siteSprite-se41bd8659f.png) no-repeat 0 -3056px;
-	margin: 146px 24px 0 19px;
+	margin: 146px 1% 0;
 }
 .wrapper{
 	display: none;
 	float: left;
-	width: 800px;
+	width: 94%;
 	height: 374px;
 	overflow: hidden;
+	position: relative;
 }
 .wrapper-item{
 	width: 500%;
 	overflow: hidden;
 	position: relative;
+	position: absolute;
+	left: 0;
 }
 .shop-item{
 	float: left;
